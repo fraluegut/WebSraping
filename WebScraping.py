@@ -1,5 +1,5 @@
 import urllib.request
-
+from urllib.request import urlopen as uReq
 datos = urllib.request.urlopen("https://www.openwebinars.net").read().decode()
 #datos = urllib.request.urlopen("https://www.tripadvisor.es/").read().decode()
 # Instalación de la librería
@@ -27,9 +27,20 @@ peticion_hoteles = requests.get(url)
 textourl = peticion_hoteles.text
 
 print("Hoteles: ")
-print(textourl)
+#print(textourl)
 
 from bs4 import BeautifulSoup
 soup = BeautifulSoup(textourl, "html.parser")
 
-soup.find_all("div")[1].findChildren()
+#soup.find_all("div")[1].findChildren()
+
+print("Cosas nuevas: ")
+new_url = "https://hipertextual.com/2018/10/juegos-windows-linux"
+uClient = uReq(url)
+page_html = uClient.read()
+
+uClient.close()
+
+page_soup = soup(page_html, "html.parser")
+a = soup.find_all("div class")
+print(a)
