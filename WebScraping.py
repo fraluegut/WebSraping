@@ -29,9 +29,9 @@ textourl = peticion_hoteles.text
 print("Hoteles: ")
 #print(textourl)
 
-from bs4 import BeautifulSoup
-soup = BeautifulSoup(textourl, "html.parser")
-
+from bs4 import BeautifulSoup as bs
+soup = bs.BeautifulSoup(textourl, "html.parser")
+"""
 #soup.find_all("div")[1].findChildren()
 
 print("Cosas nuevas: ")
@@ -42,5 +42,19 @@ page_html = uClient.read()
 uClient.close()
 
 page_soup = soup(page_html, "html.parser")
-a = soup.find_all("div class")
+a = soup.find_all("")
 print(a)
+"""
+print("1")
+for url in soup.find_all('a'):
+    print(url.get('href'))
+
+table = soup.table
+#table = soup.find('table')
+
+table_rows = table.find_all('tr')
+print("Tablas: ")
+for tr in table_rows:
+    td = tr.find_all('td')
+    row = [i.text for i in td]
+    print(row)
