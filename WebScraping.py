@@ -49,7 +49,7 @@ print("1")
 for url in soup.find_all('a'):
     print(url.get('href'))
 
-table = soup.table
+#table = soup.table
 #table = soup.find('table')
 
 table_rows = table.find_all('tr')
